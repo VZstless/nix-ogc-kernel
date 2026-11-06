@@ -11,7 +11,16 @@
   outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
 
     let
-      lib = nixpkgs.lib;
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+      };
+      kernel = pkgs.callPackage ./kernel { };
+      system = "x86_64-linux";
     in {
+      packages.${system} = {
+        linux-ogc = kernel;
+        kernelPackages = pkgs.linuxPackagesFor kernel;
+        config = kernel.configfile;
+      };
     };
 }
