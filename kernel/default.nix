@@ -3,7 +3,7 @@
   ...
 }@args:
 let
-  variants = import ./variants.nix;
+  variants = builtins.fromJSON (builtins.readFile ./versions.json);
   mkOgcKernel = callPackage ./mkOgcKernel.nix args;
 in
   builtins.mapAttrs

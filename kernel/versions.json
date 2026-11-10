@@ -1,0 +1,14 @@
+{
+  "linux-ogc": {
+    "hash": "sha256-I4O5/hlV82H6OvVB6g+EzEVHKJDlPEzuEFJeCtaFX2g=",
+    "modDirVersion": "7.3.3",
+    "tag": "v7.3.3-ogc1",
+    "version": "7.3.3-ogc1"
+  },
+  "linux-ogc-lts": {
+    "hash": "sha256-JAW86PfywVf9gaavrNTOJYTdo90AHPV060dyykBan2g=",
+    "modDirVersion": "6.18.60",
+    "rev": "e751e0091e6486d3062a53ba3af5335f4e74bc7d",
+    "version": "6.18.60-lts-ogc1"
+  }
+}
