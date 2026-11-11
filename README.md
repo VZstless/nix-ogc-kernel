@@ -2,6 +2,8 @@
 
 WARNING: this repo is under actively construction so the internal and build result may have breaking change in near future.
 
+This repo is strongly inspired by [LanTian's nix-cachyos repo](https://github.com/xddxdd/nix-cachyos-kernel)
+
 - `linux-ogc` follows the newest release of `OpenGamingCollective/linux`.
 - `linux-ogc-lts` follows the latest commit of the `ogc-lts` branch.
 
