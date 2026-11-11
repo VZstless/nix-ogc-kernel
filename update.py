@@ -33,9 +33,31 @@ VARIANTS = {
     "linux-ogc-lts": {"kind": "branch", "branch": "ogc-lts"},
 }
 
-ROOT = Path(__file__).resolve().parent
+
+def find_root() -> Path:
+    """Locate the checkout this script should operate on.
+
+    When run through `nix run .#update` the script itself lives read-only in the
+    Nix store, so fall back to the caller's working directory (walking up until a
+    `flake.nix` is found).  `OGC_KERNEL_ROOT` overrides everything.
+    """
+    env = os.environ.get("OGC_KERNEL_ROOT")
+    if env:
+        return Path(env).expanduser().resolve()
+
+    here = Path(__file__).resolve().parent
+    candidates = [here, Path.cwd()]
+    for start in candidates:
+        for candidate in (start, *start.parents):
+            if (candidate / "flake.nix").is_file():
+                return candidate
+    return here
+
+
+ROOT = find_root()
 PINS = ROOT / "kernel" / "versions.json"
 LOCK = ROOT / "flake.lock"
+STORE = "/nix/store"
 
 API = "https://api.github.com"
 NIX_TIMEOUT = 1800
@@ -208,6 +230,16 @@ def main() -> int:
 
     if not shutil.which("nix"):
         print("`nix` command not found", file=sys.stderr)
+        return 2
+
+    root_posix = ROOT.as_posix()
+    if root_posix == STORE or root_posix.startswith(f"{STORE}/"):
+        print(
+            f"refusing to work on read-only store path {ROOT}\n"
+            "run this from a writable checkout (e.g. `nix run .#update` inside the repo)\n"
+            "or point OGC_KERNEL_ROOT at it",
+            file=sys.stderr,
+        )
         return 2
 
     previous = load_previous()

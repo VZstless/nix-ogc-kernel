@@ -17,10 +17,31 @@
       };
       kernels = lib.filterAttrs (_: lib.isDerivation) (pkgs.callPackage ./kernel { });
       system = "x86_64-linux";
+
+      mkApp = name: script: {
+        type = "app";
+        program = lib.getExe (pkgs.writeShellApplication {
+          inherit name;
+          runtimeInputs = [
+            (pkgs.python3.withPackages (ps: [ ps.requests ]))
+            pkgs.cacert
+            pkgs.git
+            pkgs.nix
+          ];
+          text = ''
+            exec python3 ${script} "$@"
+          '';
+        });
+      };
     in
     {
       packages.${system} = kernels // {
         default = kernels.linux-ogc;
+      };
+
+      apps.${system} = {
+        update = mkApp "update" ./update.py;
+        default = self.apps.${system}.update;
       };
     };
 }
