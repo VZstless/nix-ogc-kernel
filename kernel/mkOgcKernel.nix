@@ -18,13 +18,24 @@ lib.makeOverridable (
     ...
   }@args:
 
-  assert lib.xor (rev == null) (tag == null)
-    || throw "mkOgcKernel: provide exactly one of `rev` or `tag`";
+  assert
+    lib.xor (rev == null) (tag == null) || throw "mkOgcKernel: provide exactly one of `rev` or `tag`";
 
   buildLinux rec {
-    inherit pname version modDirVersion defconfig;
+    inherit
+      pname
+      version
+      modDirVersion
+      defconfig
+      ;
     src = fetchFromGitHub {
-      inherit owner repo rev tag hash;
+      inherit
+        owner
+        repo
+        rev
+        tag
+        hash
+        ;
     };
   }
 )
