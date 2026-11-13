@@ -7,7 +7,7 @@ permissions:
   actions: read
   contents: read
 jobs:
-  auto-update:
+  build-linux-ogc-lts:
     runs-on: ubuntu-latest
     steps:
       - name: Maximize build space
@@ -29,6 +29,6 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Update Dependencies
+      - name: Build Kernel
         run: |
           nix build .#linux-ogc-lts
