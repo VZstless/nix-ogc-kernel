@@ -1,9 +1,9 @@
 {
   "linux-ogc": {
-    "hash": "sha256-VjV7h6FbRKIHibUlj1VC7OlCScEWFj2d8KK1tK/CoAU=",
+    "hash": "sha256-28AmjF2I9tfs+vm8hS6lyOY5NzC+DWhHIvxFmNr6tEQ=",
     "modDirVersion": "7.3.4",
-    "tag": "v7.3.4-ogc3",
-    "version": "7.3.4-ogc3"
+    "tag": "v7.3.4-ogc5",
+    "version": "7.3.4-ogc5"
   },
   "linux-ogc-lts": {
     "hash": "sha256-JAW86PfywVf9gaavrNTOJYTdo90AHPV060dyykBan2g=",
