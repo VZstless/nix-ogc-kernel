@@ -1,14 +1,14 @@
 {
   "linux-ogc": {
-    "hash": "sha256-j5cJzg60sDGSGizrVHgqoQ3ixxCNoJh9RpFQC9Ss12g=",
-    "modDirVersion": "7.3.4",
-    "tag": "v7.3.4-ogc8",
-    "version": "7.3.4-ogc8"
+    "hash": "sha256-ZFCmKSEKQnBjOcly6CZs3omXV/KG/x1FdKug/NnWDwo=",
+    "modDirVersion": "6.18.64",
+    "tag": "v6.18.64-lts-ogc1",
+    "version": "6.18.64-lts-ogc1"
   },
   "linux-ogc-lts": {
-    "hash": "sha256-JAW86PfywVf9gaavrNTOJYTdo90AHPV060dyykBan2g=",
-    "modDirVersion": "6.18.60",
-    "rev": "e751e0091e6486d3062a53ba3af5335f4e74bc7d",
-    "version": "6.18.60-lts-ogc1"
+    "hash": "sha256-ZFCmKSEKQnBjOcly6CZs3omXV/KG/x1FdKug/NnWDwo=",
+    "modDirVersion": "6.18.64",
+    "rev": "607f5f5d7cd7fa65fd5e532818e31c33add702b1",
+    "version": "6.18.64-lts-ogc1"
   }
 }
