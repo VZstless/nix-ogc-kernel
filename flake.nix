@@ -1,5 +1,13 @@
 {
   description = "OpenGamingCollective Linux Kernel for NixOS";
+
+  nixConfig = {
+    extra-substituters = [ "https://nix-ogc-kernel.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-ogc-kernel.cachix.org-1:nQk4E7rbidqaOloGHxkMOmcie+0eynxyGHBMQKTMZdQ="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     flake-parts.url = "github:hercules-ci/flake-parts";
