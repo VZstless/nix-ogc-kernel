@@ -1,4 +1,4 @@
-name: 'Build linux-ogc kernel'
+name: 'Build kernels'
 on:
   workflow_dispatch:
   schedule:
