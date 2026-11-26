@@ -9,6 +9,12 @@ permissions:
 jobs:
   build-linux-ogc:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - linux-ogc
+          - linux-ogc-lts
     steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
@@ -34,6 +40,6 @@ jobs:
         with:
           name: nix-ogc-kernel
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build kernel
+      - name: Build ${{ matrix.target }}
         run: |
-          nix build .#linux-ogc
+          nix build ".#{{ matrix.target }}"
